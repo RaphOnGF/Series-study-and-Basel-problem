@@ -1,92 +1,66 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath,amssymb}
 \usepackage{mathtools}
 \usepackage{geometry}
-\geometry{margin=2.5cm}
-\usepackage{hyperref}
 \usepackage{tcolorbox}
 \usepackage{lmodern}
-\usepackage{graphicx}
-
-\title{Étude de série}
-\author{}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+\title{Study of the Series \(\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}\)}
 \date{}
 
 \begin{document}
 \maketitle
 
-\section*{1. Convergence de la série}
+\section*{1. Convergence of the Series}
 
-On considère la série :
+We consider the series:
 \[
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+\quad \text{with } \alpha \in \mathbb{R}
 \]
-où \( \alpha \in \mathbb{R} \). 
 
-\subsection*{Cas général \(\displaystyle \sum \frac{1}{n^p + \alpha}\)}
-
-Pour tout \( \alpha \in \mathbb{R} \) et \( p > 0 \), on a :
+For large \( n \), we have:
 \[
-\frac{1}{n^p + \alpha} \sim \frac{1}{n^p} \quad \text{quand } n \to \infty
+\frac{1}{n^2 + \alpha} \sim \frac{1}{n^2}
 \]
-Donc la série converge si et seulement si \( p > 1 \) (par comparaison à la série de Riemann).
+Since \( \sum \frac{1}{n^2} \) converges (a \(p\)-series with \( p = 2 > 1 \)), the original series also converges for all real \( \alpha \), even for \( \alpha < 0 \) as long as no term diverges (i.e., \( \alpha \ne -n^2 \)).
 
-\medskip
-\textbf{Conclusion :}
-\[
-\sum_{n=1}^{\infty} \frac{1}{n^p + \alpha} \text{ converge } \iff p > 1
-\]
+\section*{2. Closed-form Expression of the Series}
 
-\section*{2. Expression de la somme pour \( p = 2 \)}
-
-Pour \( \alpha > 0 \), on a la formule suivante :
-\[
-\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
-= \frac{\pi}{2\sqrt{\alpha}} \cdot \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
-\]
-Demonstration :
-Montrer que pour tout \( \alpha > 0 \), on a :
+We aim to show that for \( \alpha > 0 \):
 \[
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
 = \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
 \]
 
-\section*{Étape 1 : somme sur \( \mathbb{Z} \)}
-On commence par la somme symétrique :
+\subsection*{Step 1: Use the Known Identity}
+For any \( a > 0 \), we use the classical identity:
 \[
-\sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2}
-\quad \text{avec } a > 0
-\]
-Cette somme est connue et vaut :
-\[
-\sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2}
-= \frac{\pi}{a} \coth(\pi a)
-\quad \text{(formule classique)}
+\sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2} = \frac{\pi}{a} \coth(\pi a)
 \]
 
-\section*{Étape 2 : suppression du terme \( n = 0 \)}
-On isole le terme \( n = 0 \) :
+\subsection*{Step 2: Remove the \( n = 0 \) Term}
 \[
-\sum_{n\neq 0} \frac{1}{n^2 + a^2}
-= \sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2} - \frac{1}{a^2}
+\sum_{n \ne 0} \frac{1}{n^2 + a^2}
 = \frac{\pi}{a} \coth(\pi a) - \frac{1}{a^2}
 \]
 
-\section*{Étape 3 : passage à la somme positive}
-Par symétrie :
+\subsection*{Step 3: Keep Only Positive Terms}
+By symmetry, we have:
 \[
 \sum_{n=1}^{\infty} \frac{1}{n^2 + a^2}
-= \frac{1}{2} \sum_{n\neq 0} \frac{1}{n^2 + a^2}
 = \frac{1}{2} \left( \frac{\pi}{a} \coth(\pi a) - \frac{1}{a^2} \right)
 \]
 
-\section*{Étape 4 : changement de variable}
-On revient à la variable \( \alpha \) avec \( \alpha = a^2 \), donc \( a = \sqrt{\alpha} \). On obtient :
+\subsection*{Step 4: Change Variable}
+Let \( \alpha = a^2 \Rightarrow a = \sqrt{\alpha} \), then:
 \[
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
 = \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
 \]
 
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!80!black, title=Final Result]
 \[
 \boxed{
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
@@ -94,40 +68,78 @@ On revient à la variable \( \alpha \) avec \( \alpha = a^2 \), donc \( a = \sqr
 \quad (\alpha > 0)
 }
 \]
+\end{tcolorbox}
 
-\section*{3. Étude des limites}
+\section*{3. Asymptotic Behavior}
 
-\subsection*{Quand \( \alpha \to 0^+ \)}
+\subsection*{As \( \alpha \to 0^+ \)}
 
-On utilise le développement :
+Let \( x = \pi \sqrt{\alpha} \to 0 \). Using the expansion:
 \[
 \coth(x) = \frac{1}{x} + \frac{x}{3} + o(x)
 \]
-avec \( x = \pi \sqrt{\alpha} \), d'où :
+Then:
 \[
-\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} \to \frac{\pi^2}{6}
-\quad \text{quand } \alpha \to 0^+
+\frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha})
+= \frac{\pi}{2\sqrt{\alpha}} \left( \frac{1}{\pi \sqrt{\alpha}} + \frac{\pi \sqrt{\alpha}}{3} + o(\sqrt{\alpha}) \right)
+= \frac{1}{2\alpha} + \frac{\pi^2}{6} + o(1)
+\]
+So the total sum is:
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+= \left( \frac{1}{2\alpha} + \frac{\pi^2}{6} \right) - \frac{1}{2\alpha} + o(1)
+= \frac{\pi^2}{6} + o(1)
 \]
 
-\subsection*{Quand \( \alpha \to +\infty \)}
-
-On utilise :
-\[
-\coth(x) = 1 + 2e^{-2x} + o(e^{-2x})
-\quad \Rightarrow \quad
-\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} \to 0
-\quad \text{quand } \alpha \to +\infty
-\]
-
-\section*{4. Résumé visuel}
-
+\begin{tcolorbox}[colback=green!5!white, colframe=green!60!black, title=Limit as \( \alpha \to 0^+ \)]
 \[
 \boxed{
 \lim_{\alpha \to 0^+} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = \frac{\pi^2}{6}
-\quad ; \quad
+}
+\]
+\end{tcolorbox}
+
+\subsection*{As \( \alpha \to +\infty \)}
+
+We use:
+\[
+\coth(x) = 1 + 2e^{-2x} + o(e^{-2x}) \quad \text{as } x \to \infty
+\]
+Then:
+\[
+\frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha})
+= \frac{\pi}{2\sqrt{\alpha}} \left( 1 + 2e^{-2\pi \sqrt{\alpha}} + o(e^{-2\pi \sqrt{\alpha}}) \right)
+= \frac{\pi}{2\sqrt{\alpha}} + o\left(\frac{1}{\sqrt{\alpha}}\right)
+\]
+And:
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+= \frac{\pi}{2\sqrt{\alpha}} - \frac{1}{2\alpha} + o\left(\frac{1}{\sqrt{\alpha}}\right)
+\to 0
+\]
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!60!black, title=Limit as \( \alpha \to +\infty \)]
+\[
+\boxed{
 \lim_{\alpha \to +\infty} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = 0
 }
 \]
+\end{tcolorbox}
+
+\section*{4. Summary}
+
+\begin{itemize}
+  \item The series \( \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} \) converges for all \( \alpha \in \mathbb{R} \setminus \{-n^2\} \).
+  \item For \( \alpha > 0 \), it admits the closed-form:
+  \[
+  \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+  = \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+  \]
+  \item Asymptotic behavior:
+  \[
+  \lim_{\alpha \to 0^+} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = \frac{\pi^2}{6}, \quad
+  \lim_{\alpha \to +\infty} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = 0
+  \]
+\end{itemize}
 
 \end{document}
-
