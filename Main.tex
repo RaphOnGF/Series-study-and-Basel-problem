@@ -8,7 +8,7 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 
-\title{Étude de la série \(\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}\)}
+\title{Étude de série}
 \author{}
 \date{}
 
@@ -44,17 +44,56 @@ Pour \( \alpha > 0 \), on a la formule suivante :
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
 = \frac{\pi}{2\sqrt{\alpha}} \cdot \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
 \]
+Demonstration :
+Montrer que pour tout \( \alpha > 0 \), on a :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+= \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+\]
 
-\begin{tcolorbox}[colback=blue!5!white, colframe=blue!80!black, title=Formule à retenir]
+\section*{Étape 1 : somme sur \( \mathbb{Z} \)}
+On commence par la somme symétrique :
+\[
+\sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2}
+\quad \text{avec } a > 0
+\]
+Cette somme est connue et vaut :
+\[
+\sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2}
+= \frac{\pi}{a} \coth(\pi a)
+\quad \text{(formule classique)}
+\]
+
+\section*{Étape 2 : suppression du terme \( n = 0 \)}
+On isole le terme \( n = 0 \) :
+\[
+\sum_{n\neq 0} \frac{1}{n^2 + a^2}
+= \sum_{n=-\infty}^{\infty} \frac{1}{n^2 + a^2} - \frac{1}{a^2}
+= \frac{\pi}{a} \coth(\pi a) - \frac{1}{a^2}
+\]
+
+\section*{Étape 3 : passage à la somme positive}
+Par symétrie :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + a^2}
+= \frac{1}{2} \sum_{n\neq 0} \frac{1}{n^2 + a^2}
+= \frac{1}{2} \left( \frac{\pi}{a} \coth(\pi a) - \frac{1}{a^2} \right)
+\]
+
+\section*{Étape 4 : changement de variable}
+On revient à la variable \( \alpha \) avec \( \alpha = a^2 \), donc \( a = \sqrt{\alpha} \). On obtient :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+= \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+\]
+
 \[
 \boxed{
 \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
-=
-\frac{\pi}{2\sqrt{\alpha}} \cdot \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
-\quad \text{pour } \alpha > 0
+= \frac{\pi}{2\sqrt{\alpha}} \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+\quad (\alpha > 0)
 }
 \]
-\end{tcolorbox}
 
 \section*{3. Étude des limites}
 
