@@ -1,0 +1,94 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\title{Étude de la série \(\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}\)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1. Convergence de la série}
+
+On considère la série :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+\]
+où \( \alpha \in \mathbb{R} \). 
+
+\subsection*{Cas général \(\displaystyle \sum \frac{1}{n^p + \alpha}\)}
+
+Pour tout \( \alpha \in \mathbb{R} \) et \( p > 0 \), on a :
+\[
+\frac{1}{n^p + \alpha} \sim \frac{1}{n^p} \quad \text{quand } n \to \infty
+\]
+Donc la série converge si et seulement si \( p > 1 \) (par comparaison à la série de Riemann).
+
+\medskip
+\textbf{Conclusion :}
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^p + \alpha} \text{ converge } \iff p > 1
+\]
+
+\section*{2. Expression de la somme pour \( p = 2 \)}
+
+Pour \( \alpha > 0 \), on a la formule suivante :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+= \frac{\pi}{2\sqrt{\alpha}} \cdot \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+\]
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!80!black, title=Formule à retenir]
+\[
+\boxed{
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha}
+=
+\frac{\pi}{2\sqrt{\alpha}} \cdot \coth(\pi \sqrt{\alpha}) - \frac{1}{2\alpha}
+\quad \text{pour } \alpha > 0
+}
+\]
+\end{tcolorbox}
+
+\section*{3. Étude des limites}
+
+\subsection*{Quand \( \alpha \to 0^+ \)}
+
+On utilise le développement :
+\[
+\coth(x) = \frac{1}{x} + \frac{x}{3} + o(x)
+\]
+avec \( x = \pi \sqrt{\alpha} \), d'où :
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} \to \frac{\pi^2}{6}
+\quad \text{quand } \alpha \to 0^+
+\]
+
+\subsection*{Quand \( \alpha \to +\infty \)}
+
+On utilise :
+\[
+\coth(x) = 1 + 2e^{-2x} + o(e^{-2x})
+\quad \Rightarrow \quad
+\sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} \to 0
+\quad \text{quand } \alpha \to +\infty
+\]
+
+\section*{4. Résumé visuel}
+
+\[
+\boxed{
+\lim_{\alpha \to 0^+} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = \frac{\pi^2}{6}
+\quad ; \quad
+\lim_{\alpha \to +\infty} \sum_{n=1}^{\infty} \frac{1}{n^2 + \alpha} = 0
+}
+\]
+
+\end{document}
+
